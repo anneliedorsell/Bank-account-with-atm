@@ -13,16 +13,17 @@ getBalance: function() {
 deposit: function(amount) {  
   return this.balance + amount;
 },
-withdrawal: function(inputValue) {
+withdrawal: function(amount) {
   return this.balance - amount;  
 },
-getAccountName: function(person) {
+getAccountName: function() {
   const owner = `Name of account: ${this.accountName}`;
   return prompt(owner);
 },
-accountError: function() {
-  //if 
-  //else alert "Error: Not a valid number"
+accountError: function(noValue) {
+  if (this.withdrawal > this.balance) 
+    console.log ("Error! Sorry, the input is not valid, please try again");    
+    this.account();
 }
 };
 
@@ -35,58 +36,31 @@ function atm(account) {
     
   } else if (select === 2) {
     let depositValue = parseFloat(prompt("How much would you like to deposit?"));
-    if (isNaN(depositAmount) || depositAmount === "" || depositAmount < 0)  
+    // if (isNaN(depositAmount) || depositAmount === "" || depositAmount < 0)  
     console.log(account.deposit(depositValue));
   
  } else if (select === 3) {
-    let withdraw = parseFloat(prompt("How much would you like to withdraw?"));
-    console.log(account.withdrawal(withdraw));
+    let withdrawalValue = parseFloat(prompt("How much would you like to withdraw?"));
+    console.log(account.withdrawal(withdrawalValue));
     
  } else if (select === 4) {
-   let person = prompt("Please enter your full name?");
-   console.log (account.getAccountName(person));
+   //let person = prompt("Please enter your full name");
+   console.log(account.getAccountName());
+ }
+}
 
- } else if (select === 5) {
- account.exit();
-  // } else if (select !---inte rätt siffra eller ett nummer) {
-  //   account.accountError();
+ //else if (select !=== is not a number && the value is to large ||  {
+ 
+ //console.log account.accountError();
   // } else {
   // this.atm();
   // }
-}
+
   
   
   atm(account);
   console.log(atm);
   
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // to handle one of the potential errors you can use this built in method:
 //const variableName = 10;
