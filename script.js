@@ -20,46 +20,46 @@ getAccountName: function() {
   const owner = `Name of account: ${this.accountName}`;
   return prompt(owner);
 },
-accountError: function(noValue) {
-  if (this.withdrawal > this.balance) 
-    console.log ("Error! Sorry, the input is not valid, please try again");    
-    this.account();
-}
+
+//accountError: function() {
+//const error = 
+//return     
+    
 };
+
 
 function atm(account) {
   //const message = parseFloat(prompt("Display message"));
-  let select = parseFloat(prompt("Please select one of the options: 1.) See balance 2.) Make a deposit 3.) Make a withdrawal 4.) Get account name 5.) Exit"));
+  let select = parseFloat(prompt("Please select one of the options:\n 1.) See balance\n 2.) Make a deposit\n 3.) Make a withdrawal\n 4.) Get account name"));
 
   if (select === 1) {
     console.log(account.getBalance());
     
   } else if (select === 2) {
-    let depositValue = parseFloat(prompt("How much would you like to deposit?"));
-    // if (isNaN(depositAmount) || depositAmount === "" || depositAmount < 0)  
+    let depositValue = parseFloat(prompt("How much would you like to deposit?"));  
     console.log(account.deposit(depositValue));
   
  } else if (select === 3) {
     let withdrawalValue = parseFloat(prompt("How much would you like to withdraw?"));
-    console.log(account.withdrawal(withdrawalValue));
+    if (this.withdrawal > this.balance) {
+    alert ("Error! Sorry, your input is not valid, please try again");}
+    else console.log(account.withdrawal(withdrawalValue));
     
  } else if (select === 4) {
-   //let person = prompt("Please enter your full name");
    console.log(account.getAccountName());
- }
-}
 
- //else if (select !=== is not a number && the value is to large ||  {
+ } else (this.withdrawal > this.balance)
+   console.log ("Error! Sorry, the input is not valid, please try again");  
+};
+
  
- //console.log account.accountError();
-  // } else {
-  // this.atm();
-  // }
+  
+  
+atm(account);
+console.log(atm);
 
-  
-  
-  atm(account);
-  console.log(atm);
+// You have to use parseFloat()to convert to numbers
+
   
 
 // to handle one of the potential errors you can use this built in method:
@@ -70,4 +70,4 @@ function atm(account) {
   //const message = parseFloat(prompt("Display message"));
   // you need to answer the question why we are using parseFloat() method here
   // either use a if/else statement or a switch. Write a comment and motivate your choice
-//}
+//
