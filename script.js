@@ -1,73 +1,74 @@
 // BANK ACCOUT WITH ATM
 
-//parseFloat??
-//let
-// && ||
-
 const account = {
+
 accountName: "Klara Svensson",
+
 balance: 100,
+
 getBalance: function() {   
-  return `Your total balance is ${this.balance} SEK`;  
+  alert(`Your total balance is ${this.balance} SEK`);
+  atm();  
+  },
+
+deposit: function() {  
+  let input = parseFloat(prompt("How much would you like to deposit?"));
+  if (input === " " || input <= 0 || isNaN(input) ) {
+    alert("Error! Sorry, the input is not valid, please try again!");
+    this.deposit();
+  } else {
+   this.balance += input;
+    // exakt samma sak men kortare
+   this.getBalance();
+  }
+ },
+
+withdrawal: function() {
+  let amount = parseFloat(prompt("How much would you like to withdraw?"));
+  if (amount === " " || amount <= 0 || isNaN(amount) || amount > this.balance) {
+    alert("Error! Sorry, the input is not valid, please try again!");
+    this.withdrawal();
+  } else {
+   this.balance - amount;
+   this.getBalance();
+  }
 },
-deposit: function(amount) {  
-  return this.balance + amount;
-},
-withdrawal: function(amount) {
-  return this.balance - amount;  
-},
+
 getAccountName: function() {
   const owner = `Name of account: ${this.accountName}`;
-  return prompt(owner);
+    return prompt(owner);
 },
 
-//accountError: function() {
-//const error = 
-//return     
-    
+accountError: function() {
+  alert("Error!");
+	atm();
+},
+
 };
 
 
-function atm(account) {
+function atm() {
   //const message = parseFloat(prompt("Display message"));
   let select = parseFloat(prompt("Please select one of the options:\n 1.) See balance\n 2.) Make a deposit\n 3.) Make a withdrawal\n 4.) Get account name"));
 
   if (select === 1) {
-    console.log(account.getBalance());
+    account.getBalance();
     
   } else if (select === 2) {
-    let depositValue = parseFloat(prompt("How much would you like to deposit?"));  
-    console.log(account.deposit(depositValue));
+    account.deposit();
   
  } else if (select === 3) {
-    let withdrawalValue = parseFloat(prompt("How much would you like to withdraw?"));
-    if (this.withdrawal > this.balance) {
-    alert ("Error! Sorry, your input is not valid, please try again");}
-    else console.log(account.withdrawal(withdrawalValue));
+  account.withdrawal();
     
  } else if (select === 4) {
-   console.log(account.getAccountName());
+   account.getAccountName();
 
- } else (this.withdrawal > this.balance)
-   console.log ("Error! Sorry, the input is not valid, please try again");  
+ } else 
+   account.accountError();
 };
-
- 
-  
-  
-atm(account);
-console.log(atm);
+   
+atm();
 
 // You have to use parseFloat()to convert to numbers
 
   
-
-// to handle one of the potential errors you can use this built in method:
-//const variableName = 10;
-//isNaN(variableName);
-
-//function atm() {
-  //const message = parseFloat(prompt("Display message"));
-  // you need to answer the question why we are using parseFloat() method here
-  // either use a if/else statement or a switch. Write a comment and motivate your choice
-//
